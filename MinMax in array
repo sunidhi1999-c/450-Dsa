@@ -1,0 +1,41 @@
+
+
+#include<iostream>
+
+using namespace std;
+
+ struct Pair{
+     int min,max;
+ };
+ Pair getMinMax(int arr[],int n){
+     struct Pair minmax;
+     int i;
+     //if only one element is present
+     if(n==1){
+         minmax.max=arr[0];
+         minmax.min=arr[0];
+         return minmax;
+     }
+     //ELSE there are more than one element
+     if(arr[0]>arr[1]){
+         minmax.max=arr[0];
+         minmax.min=arr[1];
+     }
+     for(i=2;i<n;i++){
+         if(arr[i]>minmax.max){
+             minmax.max=arr[i];
+         }
+         else if(arr[i]<minmax.min){
+             minmax.min=arr[i];
+         }
+     }
+     return minmax;
+ }
+int main()
+{
+    int arr[]={1000, 11, 445, 1, 330, 3000};
+    int arr_Size=6;
+    struct Pair minmax=getMinMax(arr,arr_Size);
+    cout<<"Max of the array is ="<<minmax.max<<"\n"<<"Min of the array is ="<<minmax.min;
+    return 0;
+}
